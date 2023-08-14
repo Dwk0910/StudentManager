@@ -10,7 +10,8 @@ public class DBConnection {
 
     private static final String JDBC_URL = "jdbc:h2:tcp://localhost/~/test";
     public static void main(String[] args) throws SQLException {
-        String[] result = selectStudent();
+        DBConnection dbc = new DBConnection();
+        String[] result = dbc.selectStudent();
         for (String s : result) {
             if (s != null) System.out.println(s);
         }
@@ -25,7 +26,7 @@ public class DBConnection {
         return (connection != null);
     }
 
-    public static String[] selectStudent() {
+    public String[] selectStudent() {
         String[] result = new String[100];
         try {
         Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "");
