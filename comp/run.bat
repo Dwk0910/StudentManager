@@ -1,2 +1,2 @@
-javac ./../StudentManager/*.java -d ./../classess && cd ../classes && java StudentManager.Main
+javac ./../StudentManager/*.java -d ./../classes && cd ./../classes && java StudentManager.Main
 pause
