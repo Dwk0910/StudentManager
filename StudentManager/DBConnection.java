@@ -24,15 +24,13 @@ public class DBConnection {
     public static boolean getConnection() throws SQLException {
         Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "");
         System.out.println("Database Connected");
-        if (connection != null) {
-            return true;
-        }
-        return false;
+        return (connection != null);
     }
-    public static List<String> selectStudent() throws SQLException {
+
+    public static List<String> selectStudent() {
         List<String> result = new ArrayList<>();
+        try {
         Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "");
-    
         System.out.println("Database Connected");
  
         String sql = "select id, name from students";
@@ -49,6 +47,9 @@ public class DBConnection {
         System.out.println("Selected table students.");
         
         connection.close();
+        } catch(SQLException se) {
+            System.out.println("Exception");
+        }
         return result;
      
     }
