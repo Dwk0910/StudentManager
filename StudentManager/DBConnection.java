@@ -5,16 +5,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DBConnection {
 
     private static final String JDBC_URL = "jdbc:h2:tcp://localhost/~/test";
     public static void main(String[] args) throws SQLException {
-        List<String> result = selectStudent();
+        String[] result = selectStudent();
         for (String s : result) {
-            System.out.println(s);
+            if (s != null) System.out.println(s);
         }
         
         //insertStudent("taeeun kim");
@@ -27,8 +25,8 @@ public class DBConnection {
         return (connection != null);
     }
 
-    public static List<String> selectStudent() {
-        List<String> result = new ArrayList<>();
+    public static String[] selectStudent() {
+        String[] result = new String[100];
         try {
         Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "");
         System.out.println("Database Connected");
@@ -38,9 +36,11 @@ public class DBConnection {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
 
+        int i = 0;
+
         while (rs.next()) {
-            result.add(rs.getString(1)+ "번 학생이름은 " + rs.getString(2));
-        
+            result[i] = rs.getString(1)+ "번 학생이름은 " + rs.getString(2);
+            i++;
             //System.out.println(rs.getString(1) +"번 학생은 " + rs.getString(2));
         }        
 
