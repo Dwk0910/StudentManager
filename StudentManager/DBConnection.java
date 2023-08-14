@@ -2,32 +2,60 @@ package StudentManager;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBConnection {
+
+    private static final String JDBC_URL = "jdbc:h2:tcp://localhost/~/test";
     public static void main(String[] args) throws SQLException {
-        String jdbcURL = "jdbc:h2:tcp://localhost/~/test";
-        Connection connection = DriverManager.getConnection(jdbcURL, "sa", "");
+        List<String> result = selectStudent();
+        for (String s : result) {
+            System.out.println(s);
+        }
+        //insertStudent("taeeun kim");
+    }
+
+    public static List<String> selectStudent() throws SQLException {
+        List<String> result = new ArrayList<>();
+        Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "");
     
-        System.out.println("Connected to H2 in-memory database.");
+        System.out.println("Database Connected");
  
-        String sql = "Create table students (ID int primary key, name varchar(50))";
+        String sql = "select id, name from students";
          
         Statement statement = connection.createStatement();
-         
-        statement.execute(sql);
-         
-        System.out.println("Created table students.");
-         
-        sql = "Insert into students (ID, name) values (1, 'TaeEun Kim')";
+        ResultSet rs = statement.executeQuery(sql);
+
+        while (rs.next()) {
+            result.add(rs.getString(1)+ "번 학생이름은 " + rs.getString(2));
+        
+            //System.out.println(rs.getString(1) +"번 학생은 " + rs.getString(2));
+        }        
+
+        System.out.println("Selected table students.");
+        
+        connection.close();
+        return result;
+     
+    }
+
+    public static void insertStudent(String userName) throws SQLException {
+        Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "");
+        Statement statement = connection.createStatement();
+        System.out.println("Database Connected.");
+
+        String sql = "Insert into students (name) values ('" + userName + "')";
          
         int rows = statement.executeUpdate(sql);
          
         if (rows > 0) {
             System.out.println("Inserted a new row.");
         }
- 
+
         connection.close();
     }
 }
