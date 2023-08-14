@@ -45,10 +45,10 @@ public class DBConnection {
         }        
 
         System.out.println("Selected table students.");
-        
         connection.close();
+        
         } catch(SQLException se) {
-            System.out.println("Exception");
+            se.printStackTrace();
         }
         return result;
      
