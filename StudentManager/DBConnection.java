@@ -16,9 +16,19 @@ public class DBConnection {
         for (String s : result) {
             System.out.println(s);
         }
+        
         //insertStudent("taeeun kim");
+        System.out.println(getConnection());
     }
 
+    public static boolean getConnection() throws SQLException {
+        Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "");
+        System.out.println("Database Connected");
+        if (connection != null) {
+            return true;
+        }
+        return false;
+    }
     public static List<String> selectStudent() throws SQLException {
         List<String> result = new ArrayList<>();
         Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "");
