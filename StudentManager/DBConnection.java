@@ -16,13 +16,19 @@ public class DBConnection {
             if (s != null) System.out.println(s);
         }
         
-        insertStudent("taeeun kim");
+        //insertStudent("taeeun kim");
         System.out.println(getConnection());
     }
 
-    public static boolean getConnection() throws SQLException {
-        Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "");
-        System.out.println("Database Connected");
+    public static boolean getConnection() {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(JDBC_URL, "sa", "");
+            System.out.println("Database Connected");
+            
+        } catch (Exception e) {
+            System.out.println("exception");
+        }
         return (connection != null);
     }
 
