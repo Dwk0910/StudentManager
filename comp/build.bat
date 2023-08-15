@@ -1,2 +1,2 @@
-javac ./../StudentManager/*.java -d ./../classes
+javac ./../StudentManager/*.java -encoding utf-8 -d ./../classes
 pause
