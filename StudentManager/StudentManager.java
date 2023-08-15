@@ -10,10 +10,10 @@ public class StudentManager extends JFrame {
         /* == EVENTS == */
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setLayout(new FlowLayout(FlowLayout.LEFT));
+        setLayout(new FlowLayout(FlowLayout.CENTER));
         setLocation(300, 300);
-        setSize(800, 600);
-        setResizable(false);
+        setSize(850, 620);
+        setResizable(true);
 
         this.init();
 

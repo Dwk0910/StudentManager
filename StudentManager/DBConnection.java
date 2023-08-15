@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DBConnection {
 
-    private static final String JDBC_URL = "jdbc:h2:tcp://localhost/~/test";
+    private static final String JDBC_URL = "jdbc:h2:tcp://192.168.1.120/~/student";
     public static void main(String[] args) throws SQLException {
         DBConnection dbc = new DBConnection();
         String[] result = dbc.selectStudent();
