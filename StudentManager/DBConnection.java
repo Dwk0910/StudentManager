@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class DBConnection {
 
     private static final String JDBC_URL = "jdbc:h2:tcp://192.168.1.120/~/student";
@@ -23,6 +24,7 @@ public class DBConnection {
     public static boolean getConnection() {
         Connection connection = null;
         try {
+           
             connection = DriverManager.getConnection(JDBC_URL, "sa", "");
             System.out.println("Database Connected");
             
