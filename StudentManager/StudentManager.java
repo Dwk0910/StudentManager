@@ -12,8 +12,8 @@ public class StudentManager extends JFrame {
 
         setLayout(new FlowLayout(FlowLayout.CENTER));
         setLocation(300, 300);
-        setSize(850, 620);
-        setResizable(true);
+        setSize(900, 620);
+        setResizable(false);
 
         this.init();
 
@@ -22,13 +22,13 @@ public class StudentManager extends JFrame {
 
     public void init() {
         // 연결 정보 출력
-        boolean connected = false;
         JPanel connection_info_panel = new JPanel();
+        DBConnection dbc = new DBConnection();
 
         connection_info_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
         connection_info_panel.setPreferredSize(new Dimension(300, 20));
         connection_info_panel.add(new JLabel("연결 정보 : "));
-        if (connected) { } else {
+        if (DBConnection.getConnection()) { } else {
             JLabel connection_info_label = new JLabel("연결되지 않았습니다");
             connection_info_label.setForeground(Color.RED);
             connection_info_panel.add(connection_info_label);

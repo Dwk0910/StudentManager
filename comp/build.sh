@@ -1,1 +1,1 @@
-javac ./../StudentManager/*.java -d ./../classes
+javac -cp ./../lib/*: ./../StudentManager/*.java -d ./../classes
