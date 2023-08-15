@@ -16,7 +16,7 @@ public class DBConnection {
             if (s != null) System.out.println(s);
         }
         
-        //insertStudent("taeeun kim");
+        insertStudent("taeeun kim");
         System.out.println(getConnection());
     }
 
@@ -32,7 +32,7 @@ public class DBConnection {
         Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "");
         System.out.println("Database Connected");
  
-        String sql = "select id, name from students";
+        String sql = "select id, name from student";
          
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
@@ -60,7 +60,7 @@ public class DBConnection {
         Statement statement = connection.createStatement();
         System.out.println("Database Connected.");
 
-        String sql = "Insert into students (name) values ('" + userName + "')";
+        String sql = "Insert into student (name) values ('" + userName + "')";
          
         int rows = statement.executeUpdate(sql);
          
